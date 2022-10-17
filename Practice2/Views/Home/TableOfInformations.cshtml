@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Practice2.Models.SpongeBobFriends>
+
+@{
+    ViewData["Title"] = "TableOfInformations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>TableOfInformations</h1>
+
+<form asp-action="Search">
+    <input type="text" name="query"/>
+    <input type="submit" value="Search" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobPlace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkinCollor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkinCollor)
+            </td>
+            <td>
+                <a asp-action="DetailsOfPerseon" asp-route-id="@item.Id">Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
